@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navDepremler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/waveform"
+        android:iconTint="@color/Depremred"
+        android:title="Depremler"
+
+        />
+    <item
+        android:id="@+id/navHarita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/map_marked_alt"
+        android:iconTint="@color/blue"
+        android:title="Harita" />
+    <item
+        android:id="@+id/navHazirlik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/bag_checked"
+        android:iconTint="@color/iconOrange"
+        android:title="Tatbikat"
+        />
+    <item
+        android:id="@+id/navTercihler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/settings"
+        android:iconTint="@color/green"
+        android:title="Tercihler" />
+</menu>

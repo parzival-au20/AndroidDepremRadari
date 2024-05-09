@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/resource_data"
+        android:icon="@drawable/clipboard_list_2"
+        android:title="Resource"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/edit_time"
+        android:icon="@drawable/clock"
+        android:title="Hours"
+        app:showAsAction="always" />
+</menu>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Base.Theme.DepremRadari" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:iconTint">#D40E0D</item>
+    </style>
+
+    <style name="App.Custom.Indicatior" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <!-- Customize your light theme here. -->
+        <item name="android:color">@color/lightred</item>
+        <item name="android:height">75dp</item>
+        <item name="shapeAppearance">
+            @style/ShapeAppearance.M3.Comp.NavigationBar.ActiveIndicator.Shape
+        </item>
+        <item name="marginHorizontal">4dp</item>
+        <item name="android:width">128dp</item>
+    </style>
+</resources>

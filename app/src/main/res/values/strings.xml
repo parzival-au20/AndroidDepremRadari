@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">DepremRadari</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="filter1">1–2</string>
+    <string name="filter2">2–3</string>
+    <string name="filter3">3–4</string>
+    <string name="filter4">4+</string>
+    <string name="soz">Felaket başa gelmeden evvel</string>
+    <string name="soz1">önleyici ve koruyucu</string>
+    <string name="soz2">tedbirleri</string>
+    <string name="soz3">düşünmek lazımdır, geldikten sonra</string>
+    <string name="soz4">dövünmenin yararı yoktur.</string>
+    <string name="HEAD1">TÜRKİYE</string>
+    <string name="HEAD2">DEPREM RADARI</string>
+
+</resources>

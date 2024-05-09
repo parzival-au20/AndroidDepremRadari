@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Normal durumda kullanılacak renk -->
+    <item android:color="@color/white" android:state_pressed="false" android:state_selected="false"/>
+    <!-- Basıldığında veya seçildiğinde kullanılacak renk -->
+    <item android:color="@color/lightblue" android:state_pressed="true"/>
+    <!-- Devre dışı bırakıldığında kullanılacak renk -->
+    <item android:color="@color/white" android:state_enabled="false"/>
+</selector>

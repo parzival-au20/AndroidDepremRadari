@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:id="@+id/itemLinear"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/magBlock"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/green"/>
+
+        <TextView
+            android:id="@+id/magBlockText"
+            android:layout_width="10dp"
+            android:layout_height="85dp"
+            android:gravity="center"
+            android:fontFamily="sans-serif-black"
+            android:textSize="45sp"
+            android:textColor="@color/green"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:background="@color/lightgreen"
+            />
+        <LinearLayout
+            android:layout_width="15dp"
+            android:layout_height="85dp"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_weight="3"
+            android:layout_marginStart="8dp">
+            <TextView
+                android:id="@+id/district"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-medium"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_weight="2"
+                />
+
+            <TextView
+                android:id="@+id/province"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-medium"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_weight="2"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/hours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/darker_gray"
+                    android:fontFamily="sans-serif-black"
+                    app:drawableLeftCompat="@drawable/clock_time_three"
+                    />
+                <TextView
+                    android:id="@+id/depth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@android:color/darker_gray"
+                    android:layout_marginStart="10dp"
+                    app:drawableLeftCompat="@drawable/pencil_ruler"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/sendIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/chevron_right"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

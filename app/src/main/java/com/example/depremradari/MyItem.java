@@ -5,14 +5,14 @@ public class MyItem {
     private String district;
     private String province;
     private String hours;
-    private double depth;
+    private String depth;
 
-    public MyItem(double mag, String district, String province, String hours, double depth) {
+    public MyItem(double mag, String district, String province, String hours, String depth) {
         this.mag = mag;
         this.district = district;
         this.province = province;
         this.hours = hours;
-        this.depth = depth;
+        this.depth = depth+" KM";
     }
 
     public double getMag() {
@@ -29,7 +29,7 @@ public class MyItem {
     public String getHours() {
         return hours;
     }
-    public double getDepth() {
+    public String getDepth() {
         return depth;
     }
 }

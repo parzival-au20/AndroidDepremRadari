@@ -12,8 +12,10 @@ import java.util.Objects;
 
 public class ResourcesDialog extends Dialog {
 
-    public ResourcesDialog(@NonNull Context context) {
+    DepremlerFragment depremlerFragment;
+    public ResourcesDialog(@NonNull Context context, DepremlerFragment depremlerFragment) {
         super(context);
+        this.depremlerFragment = depremlerFragment;
     }
 
     @Override
@@ -27,9 +29,10 @@ public class ResourcesDialog extends Dialog {
         cardFilter1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // CardView'a tıklandığında yapılacak işlemler buraya yazılır
-                // Örneğin, bir dialog göstermek veya yeni bir aktiviteye geçmek gibi
                 System.out.println("Kandilli Res");
+                depremlerFragment.resultsViewModel.setRetrofitSettings("Kandilli");
+                depremlerFragment.kandilliLiveData = depremlerFragment.resultsViewModel.getResults();
+                depremlerFragment.setKandilliLiveData();
                 dismiss();
             }
         });
@@ -49,6 +52,9 @@ public class ResourcesDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 System.out.println("AFAD Res");
+                depremlerFragment.resultsViewModel.setRetrofitSettings("AFAD");
+                depremlerFragment.afadLiveData = depremlerFragment.resultsViewModel.getAfadData();
+                depremlerFragment.setAfadLiveData();
                 dismiss();
             }
         });

@@ -3,6 +3,9 @@ package com.example.depremradari;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -22,6 +25,21 @@ public class KandilliParse {
         @SerializedName("_id")
         @Expose
         private String _id;
+        @SerializedName("title")
+        @Expose
+        private String title;
+        @SerializedName("date")
+        @Expose
+        private String date;
+        @SerializedName("mag")
+        @Expose
+        private double mag;
+        @SerializedName("depth")
+        @Expose
+        private double depth;
+        /*@SerializedName("geojson")
+        @Expose
+        private GeoJson geojson;*/
 
         public String get_id() {
             return _id;
@@ -63,51 +81,25 @@ public class KandilliParse {
             this.depth = depth;
         }
 
-        public GeoJson getGeojson() {
+       /* public GeoJson getGeojson() {
             return geojson;
         }
 
         public void setGeojson(GeoJson geojson) {
             this.geojson = geojson;
-        }
+        }*/
 
-        @SerializedName("title")
-        @Expose
-        private String title;
-        @SerializedName("date")
-        @Expose
-        private String date;
-        @SerializedName("mag")
-        @Expose
-        private double mag;
-        @SerializedName("depth")
-        @Expose
-        private double depth;
-        @SerializedName("geojson")
-        @Expose
-        private GeoJson geojson;
+
 
         // Getter ve setter metotları
     }
 
-    public class GeoJson {
-        @SerializedName("type")
-        @Expose
-        private String type;
+   /* public class GeoJson {
         @SerializedName("coordinates")
         @Expose
         private double[] coordinates;
 
         // Getter ve setter metotları
-
-        public String getType() {
-            return type;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
         public double[] getCoordinates() {
             return coordinates;
         }
@@ -115,6 +107,8 @@ public class KandilliParse {
         public void setCoordinates(double[] coordinates) {
             this.coordinates = coordinates;
         }
-    }
+    }*/
+
+
 
 }

@@ -17,4 +17,5 @@
     <color name="headerColor">#d40e0d</color>
     <color name="turk">#f90f10</color>
     <color name="darkslategray">#27262b</color>
+    <color name="darkgray">#696969</color>
 </resources>

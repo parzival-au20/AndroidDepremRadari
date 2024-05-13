@@ -13,5 +13,85 @@
     <string name="soz4">dövünmenin yararı yoktur.</string>
     <string name="HEAD1">TÜRKİYE</string>
     <string name="HEAD2">DEPREM RADARI</string>
+    <string name="Info">Verilerin geç yüklenmesi seçilen kaynağın sunucuları ile alakalıdır.
+                        Beklemeye devam edebilir veya başka bir kaynak seçebilirsiniz.</string>
+    <string name="video">Deprem tabikatı ile ilgili bilgilendirici videolar bulunmaktadır.</string>
+    <string name="test">Depreme hazır mısın haydi gel bunu ölçelim.</string>
+    <string name="çanta">Deprem çantasında neler bulunmalıdır biliyor musun?</string>
+    <string name="info">Deprem sana gelmeden sen depreme git önlemini nasıl alacağını öğren.</string>
+    <string name="ayarlar1">Deprem Veri Kaynağı</string>
+    <string name="ayarlar2">Deprem Şiddeti</string>
+    <string name="ayarlar3">Zaman</string>
+    <string name="ayarlar4">Gizlilik</string>
+    <string name="ayarlar5">Uygulamaya Destek Ol</string>
+    <string name="deprem_cantasi">Deprem Çantası</string>
+    <string name="deprem_tatbikat_video">Deprem Tatbikatı Video</string>
+    <string name="deprem_tatbikat_test">Deprem Tatbikatı Test</string>
+    <string name="onlemAl">Depreme Nasıl Önlem Alırım</string>
+    <string name="backbutton">backbutton</string>
+    <string name="gıda">Yüksek kalorili, vitamin ve karbonhidrat içeren, su kaybını önleyen ve dayanıklı (çabuk bozulmayan)
+        gıdalar (Konserve, kuru meyveler, tahin–pekmez, meyve suyu, vb.).</string>
+    <string name="belge">
+         "\u2022 Kimlik kartları (nüfus cüzdanı, ehliyet vb.)\n"
+         "\u2022 Tapu, sigorta, ruhsat belgeleri\n"
+         "\u2022 Zorunlu Deprem Poliçesi"
+         "\u2022 Diplomalar\n"
+         "\u2022 Pasaport, banka cüzdanı vb.\n"
+         "\u2022 Diğer (evcil hayvan sağlık karnesi, vb.)"
+    </string>
+    <string name="giyecekler">
+         "\u2022 İç çamaşırı\n"
+         "\u2022 Çorap\n"
+         "\u2022 Yağmurluk\n"
+         "\u2022 İklime uygun giysiler"
+    </string>
+    <string name="su">Ailedeki her bir üye için 3 günlük su (kişi başı 4 litre),</string>
+    <string name="hijyen">
+        "\u2022 Sabun ve Dezenfektanlar\n"
+         "\u2022 Diş fırçası ve macunu\n"
+         "\u2022 Islak mendil\n"
+         "\u2022 Hijyenik ped\n"
+         "\u2022 Tuvalet kâğıdı"
+    </string>
+    <string name="diger_malzemeler">
+        "\u2022 İlk yardım çantası\n"
+        "\u2022 Toz maskesi\n"
+         "\u2022 Uyku tulumu veya battaniye\n"
+         "\u2022 Çakı, düdük, küçük makas\n"
+         "\u2022 Kâğıt, kalem\n"
+         "\u2022 Pilli radyo, el feneri ve yedek piller (dayanıklı/uzun ömürlü pil seçilmeli)\n"
+         "\u2022 Kerpeten, İngiliz anahtarı ve tornavida"
+    </string>
 
+    <string name="bebekli_aile">
+        "\u2022 Bebek için ilaç, vitamin ve mineraller\n"
+        "\u2022 Hazır mama (anne sütünün olmadığı ya da yetmediği durumlar için)\n"
+         "\u2022 Bebek bezi ve ıslak mendil\n"
+         "\u2022 Oyuncak\n"
+         "\u2022 Bebek battaniyesi ve kıyafet\n"
+    </string>
+    <string name="ilk_yardım1">
+        "\u2022 Alerji ilaçları\n"
+        "\u2022 Alüminyum yanık örtüsü\n"
+         "\u2022 Antiseptik krem\n"
+         "\u2022 Aspirin veya Asetaminofen\n"
+         "\u2022 Atel\n"
+        "\u2022 Bandaj\n"
+        "\u2022 Baticon\n"
+         "\u2022 Bebek airway\n"
+         "\u2022 Bistüri ucu\n"
+         "\u2022 Boyunluk\n"
+    </string>
+    <string name="ilk_yardım2">
+         "\u2022 Cımbız\n"
+        "\u2022 Çengelli iğne\n"
+        "\u2022 El feneri\n"
+         "\u2022 Enjektör\n"
+         "\u2022 Flaster\n"
+         "\u2022 Gazlı bez\n"
+        "\u2022 Her boyutta yara bandı\n"
+         "\u2022 İlk yardım kitabı\n"
+         "\u2022 Makas\n"
+        "\u2022 Pamuklu çubuk\n"
+    </string>
 </resources>

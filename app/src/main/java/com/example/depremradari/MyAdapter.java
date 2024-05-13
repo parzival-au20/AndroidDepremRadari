@@ -37,7 +37,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.textViewDistrict.setText(item.getDistrict().toUpperCase());
         holder.textViewProvince.setText(item.getProvince().toUpperCase());
         holder.textViewHours.setText(item.getHours());
-        holder.textViewDepth.setText(Double.toString(item.getDepth()));
+        holder.textViewDepth.setText((item.getDepth()));
     }
 
     @Override

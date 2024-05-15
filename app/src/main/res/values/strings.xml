@@ -92,6 +92,236 @@
         "\u2022 Her boyutta yara bandı\n"
          "\u2022 İlk yardım kitabı\n"
          "\u2022 Makas\n"
-        "\u2022 Pamuklu çubuk\n"
+        "\u2022 \n"
+        "\n"
+    </string>
+    <string name="binada">
+         "\u2022 Sabitlenmemiş dolap, raf, pencere vb. eşyalardan uzak durulmalıdır.\n"
+        "\n"
+         "\u2022 Varsa sağlam sandalyelerle desteklenmiş masa altına veya dolgun ve hacimli koltuk, kanepe, içi dolu sandık gibi koruma sağlayabilecek eşya yanına çömelerek hayat üçgeni oluşturulmalıdır.\n"
+         "\n"
+         "\u2022 Baş iki el arasına alınarak veya bir koruyucu (yastık, kitap vb) malzeme ile korunmalıdır. Sarsıntı geçene kadar bu pozisyonda beklenmelidir.\n"
+         "\n"
+         "\u2022 Güvenli bir yer bulup, diz üstü ÇÖK, Başını ve enseni koruyacak şekilde KAPAN, Düşmemek için sabit bir yere TUTUN\n"
+        "\n"
+         "\u2022 Merdivenlere ya da çıkışlara doğru koşulmamalıdır.\n"
+         "\n"
+    </string>
+    <string name="binada2">
+        "\u2022 Balkona çıkılmamalıdır.\n"
+        "\n"
+         "\u2022 Balkonlardan ya da pencerelerden aşağıya atlanmamalıdır.\n"
+        "\n"
+        "\u2022 Kesinlikle asansör kullanılmamalıdır.\n"
+        "\n"
+        "\u2022 Telefonlar acil durum ve yangınları bildirmek dışında kullanılmamalıdır.\n"
+        "\n"
+        "\u2022 Kibrit, çakmak yakılmamalı, elektrik düğmelerine dokunulmamalıdır.\n"
+    </string>
+    <string name="binada3">
+        "\u2022 Tekerlekli sandalyede isek tekerlekler kilitlenerek baş ve boyun korumaya alınmalıdır.\n"
+        "\n"
+        "\u2022 Mutfak, imalathane, laboratuvar gibi iş aletlerinin bulunduğu yerlerde; ocak, fırın ve bu gibi cihazlar kapatılmalı, dökülebilecek malzeme ve maddelerden uzaklaşılmalıdır.\n"
+        "\n"
+        "\u2022 Sarsıntı geçtikten sonra elektrik, gaz ve su vanalarını kapatılmalı, soba ve ısıtıcılar söndürülmelidir.\n"
+        "\n"
+        "\u2022 Diğer güvenlik önlemleri alınarak gerekli olan eşya ve malzemeler alınarak bina daha önce tespit edilen yoldan derhal terk edilip toplanma bölgesine gidilmelidir.\n"
+        "\n"
+        "\u2022 Okulda sınıfta ya da büroda ise sağlam sıra, masa altlarında veya yanında; koridorda ise duvarın yanına hayat üçgeni oluşturacak şekilde ÇÖK-KAPAN-TUTUN hareketi ile baş ve boyun korunmalıdır.\n"
+        "\n"
+        "\u2022 Pencerelerden ve camdan yapılmış eşyalardan uzak durulmalıdır.\n"
+    </string>
+
+    <string name="acikAlan">
+        "\u2022 Enerji hatları ve direklerinden, ağaçlardan, diğer binalardan ve duvar diplerinden uzaklaşılmalıdır. Açık arazide çömelerek etraftan gelen tehlikelere karşı hazırlıklı olunmalıdır.\n"
+        "\n"
+        "\u2022 Toprak kayması olabilecek, taş veya kaya düşebilecek yamaç altlarında bulunulmamalıdır. Böyle bir ortamda bulunuluyorsa seri şekilde güvenli bir ortama geçilmelidir.\n"
+        "\n"
+        "\u2022 Binalardan düşebilecek baca, cam kırıkları ve sıvalara karşı tedbirli olunmalıdır.\n"
+        "\n"
+        "\u2022 Toprak altındaki kanalizasyon, elektrik ve gaz hatlarından gelecek tehlikelere karşı dikkatli olunmalıdır.\n"
+        "\n"
+        "\u2022 Deniz kıyısından uzaklaşılmalıdır\n"
+        "\n"
+    </string>
+
+    <string name="aracta">
+        "\u2022 Sarsıntı sırasında karayolunda seyir halindeyseniz; \n"
+        "\n"
+        "\u2022 Bulunduğunuz yer güvenli ise; yolu kapatmadan sağa yanaşıp durulmalıdır. Kontak anahtarı yerinde bırakılıp, pencereler kapalı olarak araç içerisinde beklenmelidir. Sarsıntı durduktan sonra açık alanlara gidilmelidir. \n"
+        "\n"
+        "\u2022 Araç meskun mahallerde ya da güvenli bir yerde değilse (ağaç ya da enerji hatları veya direklerinin yanında, köprü üstünde vb.); durdurulmalı, kontak anahtarı üzerinde bırakılarak terk edilmeli ve trafikten uzak açık alanlara gidilmelidir. \n"
+        "\n"
+    </string>
+
+    <string name="toplu_tasima">
+        "\u2022 Gerekmedikçe, kesinlikle metro ve trenden inilmemelidir. Elektriğe kapılabilirsiniz veya diğer hattan gelen başka bir metro yada tren size çarpabilir. \n"
+        "\n"
+        "\u2022 Sarsıntı bitinceye kadar metro ya da trenin içinde, sıkıca tutturulmuş askı, korkuluk veya herhangi bir yere tutunmalı, metro veya tren personeli tarafından verilen talimatlara uyulmalıdır. \n"
+        "\n"
+
+    </string>
+    <string name="kapalı_alan1">
+        "\u2022 Önce kendi emniyetinizden emin olun. \n"
+        "\n"
+        "\u2022 Sonra çevrenizde yardım edebileceğiniz kimse olup olmadığını kontrol edin. \n"
+        "\n"
+        "\u2022 Depremlerden sonra çıkan yangınlar oldukça sık görülen ikincil afetlerdir. Bu nedenle eğer gaz kokusu alırsanız, gaz vanasını kapatın. Camları ve kapıları açın. Hemen binayı terk edin. \n"
+        "\n"
+        "\u2022 Dökülen tehlikeli maddeleri temizleyin. \n"
+        "\n"
+    </string>
+    <string name="kapalı_alan2">
+        "\u2022 Yerinden oynayan telefon ahizelerini telefonun üstüne koyun. \n"
+        "\n"
+        "\u2022 Acil durum çantanızı yanınıza alın, mahalle buluşma noktanıza doğru harekete geçin. \n"
+        "\n"
+        "\u2022 Radyo ve televizyon gibi kitle iletişim araçlarıyla size yapılacak uyarıları dinleyin. \n"
+        "\n"
+        "\u2022 Cadde ve sokakları  acil yardım araçları için boş bırakın. \n"
+        "\n"
+        "\u2022 Her büyük depremden sonra mutlaka artçı depremler olur. Artçı depremler zaman içerisinde seyrekleşir ve büyüklükleri azalır. Artçı depremler hasarlı binalarda zarara yol açabilir. Bu nedenle sarsıntılar tamamen bitene kadar hasarlı binalara girilmemelidir. Artçı depremler sırasında da ana depremde yapılması gerekenler yapılmalıdır. \n"
+        "\n"
+    </string>
+    <string name="acik_alan">
+        "\u2022Çevrenizdeki hasara dikkat ederek bunları not edin. \n"
+        "\n"
+        "\u2022Hasarlı binalardan ve enerji nakil hatlarından uzak durun. \n"
+        "\n"
+        "\u2022Önce yakın çevrenizde acil yardıma gerek duyanlara yardım edin. \n"
+        "\n"
+        "\u2022Sonra mahalle toplanma noktanıza gidin. \n"
+        "\n"
+        "\u2022Yardım çalışmalarına katılın. Özel ilgiye ihtiyacı olan afetzedelere -yaşlılar, bebekler, hamileler, engelliler- yardımcı olun. \n"
+        "\n"
+    </string>
+    <string name="enkazda">
+        "\u2022 Paniklemeden durumunuzu kontrol edin.\n"
+        "\n"
+        "\u2022 Hareket kabiliyetiniz kısıtlanmışsa çıkış için hayatınızı riske atacak hareketlere kalkışmayın. Biliniz ki kurtarma ekipleri en kısa zamanda size ulaşmak için çaba gösterecektir.\n"
+        "\n"
+        "\u2022 Enerjinizi en tasarruflu şekilde kullanmak için hareketlerinizi kontrol altında tutun.\n"
+        "\n"
+        "\u2022 El ve ayaklarınızı kullanabiliyorsanız su, kalorifer, gaz tesisatlarına, zemine vurmak suretiyle varlığınızı duyurmaya çalışın.\n"
+        "\n"
+        "\u2022 Sesinizi kullanabiliyorsanız kurtarma ekiplerinin seslerini duymaya ve onlara seslenmeye çalışınız. Ancak enerjinizi kontrollü kullanın.\n"
+        "\n"
+    </string>
+    <string name="deprem_oncesi1">
+        "\u2022 Yerleşim bölgeleri titizlikle belirlenmelidir. Kaygan ve ovalık bölgeler iskana açılmamalıdır. Konutlar gevşek toprağa sahip meyilli arazilere yapılmamalıdır. \n"
+        "\n"
+        "\u2022 Yapılar deprem etkilerine karşı dayanıklı inşa edilmelidir. (Yapı Tekniğine ve İnşaat Yönetmeliğine uygun olarak) \n"
+        "\n"
+        "\u2022 İmar planında konuta ayrılmış yerler dışındaki yerlere ev ve bina yapılmamalıdır. \n"
+        "\n"
+        "\u2022 Dik yarların yakınına, dik boğaz ve vadilerin içine bina yapılmamalıdır. \n"
+        "\n"
+        "\u2022 Çok kar yağan ve çığ gelen yamaçlarda bina yapılmamalıdır. \n"
+        "\n"
+        "\u2022 Mevcut binaların dayanıklılıkları artırılmalıdır. \n"
+        "\n"
+        "\u2022 Konutlara deprem sigortası yaptırılmalıdır. \n"
+        "\n"
+    </string>
+    <string name="deprem_oncesi2">
+        "\u2022 Dolap üzerine konulan eşya ve büro malzemeleri kayarak düşmelerini önlemek için plastik tutucu malzeme veya yapıştırıcılarla sabitlenmelidir.\n"
+        "\n"
+        "\u2022 Soba ve diğer ısıtıcılar sağlam malzemelerle duvara veya yere sabitlenmelidir.\n"
+        "\n"
+        "\u2022 Dolaplar ve devrilebilecek benzeri eşyalar birbirine ve duvara sabitlenmelidir. Eğer sabitlenen eşya ve duvar arasında boşluk kalıyorsa, çarpma etkisini düşürmek için araya bir dolgu malzemesi konulmalıdır.\n"
+        "\n"
+        "\u2022 Tavan ve duvara asılan avize, klima vb. cihazlar bulundukları yere ağırlıklarını taşıyacak şekilde, duvar ve pencerelerden yeterince uzağa ve kanca ile asılmalıdır.\n"
+        "\n"
+        "\u2022 İçinde ağır eşyalar bulunan dolap kapakları mekanik kilitler takılarak sıkıca kapalı kalmaları sağlanmalı.\n"
+        "\n"
+    </string>
+    <string name="deprem_oncesi3">
+        "\u2022 Tezgah üzerindeki kayabilecek beyaz eşyaların altına metal profil koyarak bunların kayması önlenmelidir. \n"
+        "\n"
+        "\u2022 Zehirli, patlayıcı, yanıcı maddeler düşmeyecek bir konumda sabitlenmeli ve kırılmayacak bir şekilde depolanmalıdır. Bu maddelerin üzerlerine fosforlu, belirleyici etiketler konulmalıdır. \n"
+        "\n"
+        "\u2022 Rafların önüne elastik bant ya da tel eklenebilir. Küçük nesneler ve şişeler, birbirlerine çarpmayacak ve devrilmeyecek şekilde, kutuların içine yerleştirilmelidir. \n"
+        "\n"
+        "\u2022 Gaz kaçağı ve yangına karşı, gaz vanası ve elektrik sigortaları otomatik hale getirilmelidir. \n"
+        "\n"
+        "\u2022 Binadan acilen çıkmak için kullanılacak yollardaki tehlikeler ortadan kaldırılmalı, bu yollar işaretlenmeli, çıkışı engelleyebilecek eşyalar çıkış yolu üzerinden kaldırılmalıdır. \n"
+        "\n"
+    </string>
+    <string name="deprem_oncesi4">
+        "\u2022 Geniş çıkış yolları oluşturulmalıdır. Dışa doğru açılan kapılar kullanılmalı, acil çıkış kapıları kilitli olmamalıdır. Acil çıkışlar aydınlatılmalıdır. \n"
+        "\n"
+        "\u2022 Karyolalar pencerenin ve üzerine devrilebilecek ağır dolapların yanına konulmamalı, karyolanın üzerinde ağır eşya olan raf bulundurulmamalıdır. \n"
+        "\n"
+        "\u2022 Tüm bireylerin katılımı ile (evde, iş yerinde, apartmanda, okulda) “Afete hazırlık planları” yapılmalı, her altı ayda bir bu plan gözden geçirilmelidir. Zaman zaman bu plana göre nasıl davranılması gerektiğinin tatbikatları yapılmalıdır. \n"
+        "\n"
+        "\u2022 Bir afet ve acil durumda eve ulaşılamayacak durumlar için aile bireyleri ile iletişimin nasıl sağlanacağı, alternatif buluşma yerleri ve bireylerin ulaşabileceği bölge dışı bağlantı kişisi (ev, işyeri, okul içinde, dışında ve ya mahalle dışında) belirlenmelidir. \n"
+        "\n"
+        "\u2022 Önemli evraklar (kimlik kartları, tapu, sigorta belgeleri, sağlık karnesi, diplomalar, pasaport, banka cüzdanı vb.) kopyaları hazırlanarak su geçirmeyecek bir şekilde saklanmalı, ayrıca bu evrakların bir örneği de bölge dışı bağlantı kişisinde bulunmalıdır. \n"
+        "\n"
+    </string>
+    <string name="deprem_oncesi5">
+        "\u2022 Bina yönetimince önceden belirlenen, mesken veya iş yerinin özelliği ve büyüklüğüne göre uygun yangın söndürme cihazı mutlaka bulundurulmalı ve periyodik bakımları da yaptırılmalıdır. Bu cihazlar; \n"
+        "\n"
+        "\u2022 Kolayca ulaşılabilecek bir yerde tutulmalıdır. \n"
+        "\n"
+        "\u2022 Yeri herkes tarafından bilinmelidir. \n"
+        "\n"
+        "\u2022 Duvara sıkıca sabitlenmelidir. \n"
+        "\n"
+        "\u2022 Her yıl ilgili firma tarafından bakımı yapılmalıdır. \n"
+        "\n"
+        "\u2022 Bir kez kullanıldıktan sonra mutlaka tekrar doldurulmalıdır. \n"
+        "\n"
+        "\u2022 Binalarda asansörlerin kapı yanlarına "Deprem Sırasında Kullanılmaz" levhası asılmalıdır. \n"
+        "\n"
+    </string>
+    <string name="gizlilik1">
+        Son güncellenme: <b>15/05/2024</b>"\n"
+        Güvenliğiniz bizim için önemli. Bu sebeple bizimle paylaşacağınız kişisel verileriniz hassasiyetle korunmaktadır.
+        Biz, Deprem Radarı, veri sorumlusu olarak, bu gizlilik ve kişisel verilerin korunması politikası ile, hangi kişisel verilerinizin hangi amaçla işleneceği, işlenen verilerin kimlerle ve neden paylaşılabileceği, veri işleme yöntemimiz ve hukuki sebeplerimiz ile; işlenen verilerinize ilişkin haklarınızın neler olduğu hususunda sizleri aydınlatmayı amaçlıyoruz.
+    </string>
+    <string name="gizlilik2">
+        Kimlik, (isim, soy isim, doğum tarihi gibi) iletişim, (adres, e-posta adresi, telefon, IP, konum gibi) özlük, sosyal medya,
+        finans bilgileriniz ile görsel ve işitsel kayıtlarınız tarafımızca, çerezler (cookies) vb. teknolojiler vasıtasıyla, otomatik veya
+        otomatik olmayan yöntemlerle ve bazen de analitik sağlayıcılar, reklam ağları, arama bilgi sağlayıcıları, teknoloji sağlayıcıları gibi
+        üçüncü taraflardan elde edilerek, kaydedilerek, depolanarak ve güncellenerek, aramızdaki hizmet ve sözleşme ilişkisi çerçevesinde ve süresince,
+        meşru menfaat işleme şartına dayanılarak işlenecektir.
+    </string>
+    <string name="gizlilik3">
+        Bizimle paylaştığınız kişisel verileriniz; hizmetlerimizden faydalanabilmeniz amacıyla sizlerle sözleşmeler kurabilmek,
+        sunduğumuz hizmetlerin gerekliliklerini en iyi şekilde ve aramızdaki sözleşmelere uygun olarak yerine getirebilmek, bu sözleşmelerden
+        doğan haklarınızın tarafınızca kullanılmasını sağlayabilmek, ürün ve hizmetlerimizi, ihtiyaçlarınız doğrultusunda geliştirebilmek ve
+        bu gelişmelerden sizleri haberdar edebilmek, ayrıca sizleri daha geniş kapsamlı hizmet sağlayıcıları ile yasal çerçeveler içerisinde buluşturabilmek
+        ve kanundan doğan zorunlulukların (kişisel verilerin talep halinde adli ve idari makamlarla paylaşılması) yerine getirilebilmesi amacıyla,
+        sözleşme ve hizmet süresince, amacına uygun ve ölçülü bir şekilde işlenecek ve güncellenecektir.
+    </string>
+    <string name="gizlilik4">
+        Bizimle paylaştığınız kişisel verileriniz; faaliyetlerimizi yürütmek üzere hizmet aldığımız ve/veya verdiğimiz,
+        sözleşmesel ilişki içerisinde bulunduğumuz, iş birliği yaptığımız, yurt içi ve yurt dışındaki 3. şahıslar ile kurum ve
+        kuruluşlara ve talep halinde adli ve idari makamlara, gerekli teknik ve idari önlemler alınması koşulu ile aktarılabilecektir.
+    </string>
+    <string name="gizlilik5">
+        KVKK madde 11 uyarınca herkes, veri sorumlusuna başvurarak aşağıdaki haklarını kullanabilir:"\n""\n"
+        <liste>
+            <madde>1.	Kişisel veri işlenip işlenmediğini öğrenme,"\n""\n"</madde>
+            <madde>2.	Kişisel verileri işlenmişse buna ilişkin bilgi talep etme,"\n""\n"</madde>
+            <madde>3.	Kişisel verilerin işlenme amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme,"\n""\n"</madde>
+            <madde>4.	Yurt içinde veya yurt dışında kişisel verilerin aktarıldığı üçüncü kişileri bilme,"\n""\n"</madde>
+            <madde>5.	Kişisel verilerin eksik veya yanlış işlenmiş olması hâlinde bunların düzeltilmesini isteme,"\n""\n"</madde>
+            <madde>6.	Kişisel verilerin silinmesini veya yok edilmesini isteme,"\n""\n"</madde>
+            <madde>7.	(5) ve (6) bentleri uyarınca yapılan işlemlerin, kişisel verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme,"\n""\n"</madde>
+            <madde>8.	İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle kişinin kendisi aleyhine bir sonucun ortaya çıkmasına itiraz etme,"\n""\n"</madde>
+        </liste>
+        Kişisel verilerin kanuna aykırı olarak işlenmesi sebebiyle zarara uğraması hâlinde zararın giderilmesini talep etme, haklarına sahiptir.
+        "\n"
+        Yukarıda sayılan haklarınızı kullanmak üzere <b>depremRadari@gmail.com</b> üzerinden bizimle iletişime geçebilirsiniz.
+
+    </string>
+    <string name="gizlilik6">
+        Sizlere talepleriniz doğrultusunda hizmet sunabilmek amacıyla,
+        sadece gerekli olan kişisel verilerinizin, işbu gizlilik ve kişisel verilerin işlenmesi politikası uyarınca işlenmesini,
+        kabul edip etmemek hususunda tamamen özgürsünüz. Uygulamayı kullanmaya devam ettiğiniz takdirde, kabul etmiş olduğunuz tarafımızca
+        varsayılacaktır. Şayet kabul etmiyorsanız, lütfen uygulamayı tüm cihazlarınızdan kaldırınız. Ayrıntılı bilgi için bizimle
+        <b>depremRadari@gmail.com</b>  e-mail adresi üzerinden iletişime geçmekten lütfen çekinmeyiniz.
     </string>
 </resources>

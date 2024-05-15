@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".TatbikatInfo">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:theme="@style/Base.Theme.AppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/orange"
+        app:titleTextAppearance="@style/appBar.TextAppearance.Bold"
+        app:title="Depreme Öncesi"
+        app:navigationIcon="@drawable/chevron_left"
+        app:titleTextColor="@android:color/white"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="65dp"
+        android:background="@color/lightcyan">
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_marginTop="60dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:src="@drawable/once1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deprem Öldürmez Tedbirsizlik Öldürür !!"
+                android:textColor="@color/Depremred"
+                android:textStyle="bold"
+                android:background="@color/yellow"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:textSize="20sp"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/lightorange"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="false"
+                android:id="@+id/card_1"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingTop="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bilgi Kutucuğu-1"
+                        android:textColor="@color/orange"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-medium"
+                        android:textAlignment="center"
+                        android:layout_marginEnd="10dp"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:paddingHorizontal="10dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/deprem_oncesi1"
+                    android:layout_marginTop="50dp"
+                    android:textSize="18sp"
+                    android:paddingVertical="10dp">
+                </TextView>
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:layout_marginTop="60dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/once2"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/lightorange"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="false"
+                android:id="@+id/card_2"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingTop="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bilgi Kutucuğu-2"
+                        android:textColor="@color/orange"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-medium"
+                        android:textAlignment="center"
+                        android:layout_marginEnd="10dp"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/deprem_oncesi2"
+                    android:layout_marginTop="50dp"
+                    android:textSize="18sp"
+                    android:paddingVertical="10dp">
+                </TextView>
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:layout_marginTop="60dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:src="@drawable/once3"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/lightorange"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="false"
+                android:id="@+id/card_3"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingTop="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bilgi Kutucuğu-3"
+                        android:textColor="@color/orange"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-medium"
+                        android:textAlignment="center"
+                        android:layout_marginEnd="10dp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:paddingHorizontal="10dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/deprem_oncesi3"
+                    android:layout_marginTop="50dp"
+                    android:paddingVertical="10dp"
+                    android:textSize="18sp">
+                </TextView>
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:layout_marginTop="60dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:src="@drawable/once4"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/lightorange"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="false"
+                android:id="@+id/card_4"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingTop="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bilgi Kutucuğu-4"
+                        android:textColor="@color/orange"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-medium"
+                        android:textAlignment="center"
+                        android:layout_marginEnd="10dp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:paddingHorizontal="10dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/deprem_oncesi4"
+                    android:layout_marginTop="50dp"
+                    android:paddingVertical="10dp"
+                    android:textSize="18sp">
+                </TextView>
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:layout_marginTop="60dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:src="@drawable/once5"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/lightorange"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="false"
+                android:id="@+id/card_5"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="50dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingTop="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bilgi Kutucuğu-5"
+                        android:textColor="@color/orange"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-medium"
+                        android:textAlignment="center"
+                        android:layout_marginEnd="10dp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:paddingHorizontal="10dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/deprem_oncesi5"
+                    android:layout_marginTop="50dp"
+                    android:paddingVertical="10dp"
+                    android:textSize="18sp">
+                </TextView>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

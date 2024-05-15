@@ -20,7 +20,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/orange"
             app:titleTextAppearance="@style/appBar.TextAppearance.Bold"
-            app:title="Depreme Nasıl Önlem Alırım"
+            app:title="Deprem Sonrası"
             app:navigationIcon="@drawable/chevron_left"
             app:titleTextColor="@android:color/white"/>
         <LinearLayout
@@ -46,7 +46,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="DEPREM ÖNCESİ ALINACAK ÖNLEMLER"
+                        android:text="KAPALI ALANDAYSANIZ"
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -76,7 +76,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="DEPREM ANINDA YAPILMASI GEREKENLER"
+                        android:text="AÇIK ALANDAYSANIZ"
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -107,7 +107,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="DEPREM SONRASINDA YAPILMASI GEREKENLER"
+                        android:text="YIKINTI ALTINDA MAHSUR KALDIYSANIZ"
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold"

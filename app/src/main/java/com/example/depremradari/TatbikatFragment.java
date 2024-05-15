@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import java.util.Objects;
 
 public class TatbikatFragment extends Fragment {
-    CardView card_1, card_2, card_3, card_4;
+
     private CardView[] navCards;
 
     @Override

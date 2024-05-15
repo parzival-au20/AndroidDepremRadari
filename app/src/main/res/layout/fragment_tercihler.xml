@@ -6,12 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".TercihlerFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:theme="@style/Base.Theme.AppBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Base.Theme.AppBar">
-        <include layout="@layout/toolbar_layout" />
-    </com.google.android.material.appbar.AppBarLayout>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/green"
+        app:titleTextAppearance="@style/appBar.TextAppearance.Bold"
+        app:title="Ayarlar"
+        app:titleTextColor="@android:color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,6 +34,7 @@
             android:fontFamily="sans-serif-black"/>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -86,6 +90,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -140,6 +145,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -203,6 +209,7 @@
             android:fontFamily="sans-serif-black"/>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -257,6 +264,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"

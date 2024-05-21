@@ -18,12 +18,12 @@ public class KapalıAlan extends Fragment {
         Toolbar toolbar = rootView.findViewById(R.id.toolbarInfo);
 
         if (getActivity() instanceof AppCompatActivity) {
-            AppCompatActivity activity = (AppCompatActivity) getActivity();
-            activity.setSupportActionBar(toolbar);
 
             toolbar.setNavigationOnClickListener(view -> {
                 // Fragment'tan önceki ekrana dön
-                activity.onBackPressed();
+                if (getFragmentManager() != null) {
+                    getFragmentManager().popBackStack(); // BackStack'i yönet
+                }
             });
         }
         return rootView;

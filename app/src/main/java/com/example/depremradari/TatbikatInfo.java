@@ -2,6 +2,9 @@ package com.example.depremradari;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -10,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 public class TatbikatInfo extends Fragment {
 
@@ -29,16 +33,18 @@ public class TatbikatInfo extends Fragment {
                 rootView.findViewById(R.id.card_3),
         };
 
+
         // Toolbar öğesini al
         Toolbar toolbar = rootView.findViewById(R.id.toolbar);
 
         if (getActivity() instanceof AppCompatActivity) {
-            AppCompatActivity activity = (AppCompatActivity) getActivity();
-            activity.setSupportActionBar(toolbar);
 
             toolbar.setNavigationOnClickListener(view -> {
                 // Fragment'tan önceki ekrana dön
-                activity.onBackPressed();
+                // Fragment'tan önceki ekrana dön
+                if (getFragmentManager() != null) {
+                    getFragmentManager().popBackStack(); // BackStack'i yönet
+                }
             });
         }
 
@@ -68,7 +74,7 @@ public class TatbikatInfo extends Fragment {
 
     private void navigateToFragment(Fragment fragment) {
         requireActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frameLayout, fragment)
+                .replace(R.id.frameLayoutTatbikat, fragment)
                 .addToBackStack(null)
                 .commit();
     }

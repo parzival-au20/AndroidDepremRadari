@@ -4,6 +4,7 @@ import static androidx.core.content.ContentProviderCompat.requireContext;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -16,12 +17,21 @@ import java.util.Objects;
 
 public class TimeDialog extends Dialog {
 
-    private DepremlerFragment depremlerFragment;
-    public TimeDialog(@NonNull Context context,  DepremlerFragment depremlerFragment) {
-        super(context);
-        this.depremlerFragment = depremlerFragment;
-    }
 
+    private TimeDialogListener listener;
+    private SharedPreferences preferences;
+    private String selectedTime;
+    public TimeDialog(@NonNull Context context, TimeDialogListener listener, String selectedTime) {
+        super(context);
+        this.listener = listener;
+        this.preferences = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        this.selectedTime = selectedTime;
+    }
+    public TimeDialog(@NonNull Context context, TimeDialogListener listener) {
+        super(context);
+        this.listener = listener;
+        this.preferences = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,44 +39,42 @@ public class TimeDialog extends Dialog {
         Objects.requireNonNull(getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
         // Diğer ayarlamaları burada yapabilirsiniz
         RadioGroup radioGroup = findViewById(R.id.radio_group);
-
+        String defaultTimeFilter = preferences.getString("DefaultTimeFilter", "24");
+        if(selectedTime == null){
+            selectedTime = defaultTimeFilter;
+        }
+        switch (selectedTime) {
+            case "1":
+                radioGroup.check(R.id.radio_button_1);
+                break;
+            case "12":
+                radioGroup.check(R.id.radio_button_2);
+                break;
+            case "24":
+                radioGroup.check(R.id.radio_button_3);
+                break;
+        }
         // RadioGroup'a tıklama dinleyici ekle
         radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             // Seçilen radio butonunu bul
             RadioButton radioButton = findViewById(checkedId);
             if (radioButton != null) {
                 if (checkedId == R.id.radio_button_1) {
-                    filterItemsByHour(1);
+                    //filterItemsByHour(1);
+                    listener.onTimeSelected(1);
                     dismiss();
                 } else if (checkedId == R.id.radio_button_2) {
-                    filterItemsByHour(12);
+                    //filterItemsByHour(12);
+                    listener.onTimeSelected(12);
                     dismiss();
                 } else if (checkedId == R.id.radio_button_3) {
-                    filterItemsByHour(24);
+                    //filterItemsByHour(24);
+                    listener.onTimeSelected(24);
                     dismiss();
                 }
             }
         });
     }
 
-    private void filterItemsByHour(int time) {
-        List<MyItem> filteredList = new ArrayList<>();
-        for (MyItem item : depremlerFragment.itemList) {
-            String itemTime = item.getHours(); // Varsayalım ki MyItem sınıfında zamanı temsil eden bir metot var
-            String[] timeArray = itemTime.split(" ");
-            int hour = Integer.parseInt(timeArray[0]);
-            String state = timeArray[1];
-
-            if ( (Objects.equals(state, "dakika") || (hour <= 1 && Objects.equals(state, "saat"))) && time==1 ) {
-                filteredList.add(item);
-            } else if ((hour <= 12 && Objects.equals(state, "saat")) && time==12) {
-                filteredList.add(item);
-            } else if ((hour <= 24 && Objects.equals(state, "saat")) && time == 24) {
-                filteredList.add(item);
-            }
-        }
-        depremlerFragment.adapter = new MyAdapter(depremlerFragment.getContext(), filteredList);
-        depremlerFragment.recyclerView.setAdapter(depremlerFragment.adapter);
-    }
 
 }

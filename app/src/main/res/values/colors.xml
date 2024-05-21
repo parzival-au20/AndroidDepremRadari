@@ -18,4 +18,8 @@
     <color name="turk">#f90f10</color>
     <color name="darkslategray">#27262b</color>
     <color name="darkgray">#696969</color>
+    <color name="blue_">#5AB2FF</color>
+    <color name="kahverengi">#ceae7f</color>
+    <color name="kahverengi_light">#fcf0d6</color>
+    <color name="kahverengi_dark">#c93a2c</color>
 </resources>

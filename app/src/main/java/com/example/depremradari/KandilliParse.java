@@ -37,9 +37,9 @@ public class KandilliParse {
         @SerializedName("depth")
         @Expose
         private double depth;
-        /*@SerializedName("geojson")
+        @SerializedName("geojson")
         @Expose
-        private GeoJson geojson;*/
+        private GeoJson geojson;
 
         public String get_id() {
             return _id;
@@ -81,20 +81,20 @@ public class KandilliParse {
             this.depth = depth;
         }
 
-       /* public GeoJson getGeojson() {
+        public GeoJson getGeojson() {
             return geojson;
         }
 
         public void setGeojson(GeoJson geojson) {
             this.geojson = geojson;
-        }*/
+        }
 
 
 
         // Getter ve setter metotları
     }
 
-   /* public class GeoJson {
+   public class GeoJson {
         @SerializedName("coordinates")
         @Expose
         private double[] coordinates;
@@ -107,7 +107,7 @@ public class KandilliParse {
         public void setCoordinates(double[] coordinates) {
             this.coordinates = coordinates;
         }
-    }*/
+    }
 
 
 

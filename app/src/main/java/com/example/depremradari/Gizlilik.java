@@ -31,7 +31,9 @@ public class Gizlilik extends Fragment {
 
             toolbar.setNavigationOnClickListener(view -> {
                 // Fragment'tan önceki ekrana dön
-                activity.onBackPressed();
+                if (getFragmentManager() != null) {
+                    getFragmentManager().popBackStack(); // BackStack'i yönet
+                }
             });
         }
 

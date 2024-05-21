@@ -1,5 +1,7 @@
 package com.example.depremradari;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class TercihlerFragment extends Fragment {
+public class TercihlerFragment extends Fragment implements ResourceDialogListener, MagDialogListener, TimeDialogListener{
 
     private CardView[] navCards;
+    ResourcesDialog resourcesDialog;
+    MagFilterDialog magFilterDialog;
+    TimeDialog timeDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,13 +53,22 @@ public class TercihlerFragment extends Fragment {
     private void openNewFragmentOrActivity(int cardIndex) {
         switch (cardIndex) {
             case 1:
-                //navigateToFragment(new Gizlilik());
+                if (resourcesDialog == null) {
+                    resourcesDialog = new ResourcesDialog(requireContext(), this);
+                }
+                resourcesDialog.show();
                 break;
             case 2:
-                //navigateToFragment(new DepremAninda());
+                if (magFilterDialog == null) {
+                    magFilterDialog = new MagFilterDialog(requireContext(), this);
+                }
+                magFilterDialog.show();
                 break;
             case 3:
-                //navigateToFragment(new DepremSonrasi());
+                if (timeDialog == null) {
+                    timeDialog = new TimeDialog(requireContext(), this);
+                }
+                timeDialog.show();
                 break;
             case 4:
                 navigateToFragment(new Gizlilik());
@@ -70,5 +84,24 @@ public class TercihlerFragment extends Fragment {
                 .replace(R.id.frameLayout, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void onResourceSelected(String resource) {
+        // Tercihler için yapılan işlemler
+        // Örneğin uygulama genelinde bir ayarı güncellemek
+        SharedPreferences preferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        preferences.edit().putString("defaultResource", resource).apply();
+    }
+    @Override
+    public void onMagSelected(String filter) {
+        SharedPreferences preferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        preferences.edit().putString("DefaultMagnitudeFilter", filter).apply();
+    }
+
+    @Override
+    public void onTimeSelected(int time) {
+        SharedPreferences preferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        preferences.edit().putString("DefaultTimeFilter", String.valueOf(time)).apply();
     }
 }

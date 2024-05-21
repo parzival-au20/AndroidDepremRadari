@@ -1,12 +1,14 @@
 package com.example.depremradari;
 
-import android.app.Dialog;
+
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.location.Address;
+import android.location.Geocoder;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
@@ -28,53 +30,51 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 
-import com.airbnb.lottie.LottieAnimationView;
-
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.TimeZone;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class DepremlerFragment extends Fragment{
+public class DepremlerFragment extends Fragment implements ResourceDialogListener,TimeDialogListener {
 
     public RecyclerView recyclerView;
     private Context context;
     public MyAdapter adapter;
     public List<MyItem> itemList;
-    private CardView[] filterCards;
-    private Button[] filterButtons;
+    private String defaultFilterIndex;
+    private String defaultTime;
+    public CardView[] filterCards;
+    public Button[] filterButtons;
     private ImageView resourceImage;
-    private boolean[] buttonClicked = {false, false, false, false};
-    private int[] backgroundColor = {R.color.green,
-                                R.color.yellow,
-                                 R.color.orange,
-                                R.color.Depremred};
+    public boolean[] buttonClicked = {false, false, false, false};
+    public int[] backgroundColor = {R.color.green,
+            R.color.yellow,
+            R.color.orange,
+            R.color.Depremred};
     ResourcesDialog resourcesDialog;
     TimeDialog timeDialog;
     public ResultsViewModel resultsViewModel;
-    Dialog dialog;
-    Button btnDialogCancel, BtnDialogLogout;
     SimpleDateFormat format;
     public LiveData<List<KandilliParse.Result>> kandilliLiveData;
     public LiveData<List<AfadParse.Data>> afadLiveData;
+    public LiveData<CsemParse> csemLiveData;
     private FrameLayout frameLayout;
     private View loadingView;
     private View rootView;
-    private String selectedResource ;
-    private String selectedTime;
+    private String selectedResource;
 
-    public String getSelectedResource() {
-        return selectedResource;
-    }
+    public String selectedTime;
+    private List<MyItem> filteredList;
+    private List<MyItem> filteredFinalList;
 
     public void setSelectedResource(String selectedResource) {
         this.selectedResource = selectedResource;
@@ -84,29 +84,38 @@ public class DepremlerFragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        filteredList = new ArrayList<>();
     }
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
     }
 
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         frameLayout = new FrameLayout(inflater.getContext());
         frameLayout.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
         loadingView = inflater.inflate(R.layout.loading_animation, frameLayout, false);
         rootView = inflater.inflate(R.layout.fragment_depremler, frameLayout, false);
-
         showLoading();
 
-        resultsViewModel = new ViewModelProvider(this).get(ResultsViewModel.class);
-        resultsViewModel.setRetrofitSettings("Kandilli");
-        kandilliLiveData = resultsViewModel.getResults();
-
-        setToolbar();
         resourceImage = frameLayout.findViewById(R.id.resourceImage);
+        resultsViewModel = new ViewModelProvider(this).get(ResultsViewModel.class);
+        SharedPreferences preferences = requireActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        String defaultResource = preferences.getString("defaultResource", "Kandilli");
+
+        SharedPreferences preferences_filter = requireActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        defaultFilterIndex = preferences.getString("DefaultMagnitudeFilter", "Filter4").split("")[6];
+
+        SharedPreferences preferences_time = requireActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        defaultTime = preferences.getString("DefaultTimeFilter", "24");
+        setSelectedTime(defaultTime);
+        setToolbar();
+
         filterCards = new CardView[]{
                 rootView.findViewById(R.id.card_filter1),
                 rootView.findViewById(R.id.card_filter2),
@@ -124,8 +133,9 @@ public class DepremlerFragment extends Fragment{
         recyclerView = rootView.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         //setAfadLiveData();
-        setKandilliLiveData();
+        //setKandilliLiveData();
 
+        onResourceSelected(defaultResource);
 
         for (int i = 0; i < filterButtons.length; i++) {
             final int index = i;
@@ -136,30 +146,38 @@ public class DepremlerFragment extends Fragment{
                 }
             });
         }
-
         return frameLayout;
     }
 
-    public void setToolbar(){
+    @Override
+    public void onResourceSelected(String resource) {
+        resultsViewModel.setRetrofitSettings(resource);
+        if ("Kandilli".equals(resource)) {
+            kandilliLiveData = resultsViewModel.getResults();
+            setKandilliLiveData();
+        } else if ("AFAD".equals(resource)) {
+            afadLiveData = resultsViewModel.getAfadData();
+            setAfadLiveData();
+        } else if ("CSEM".equals(resource)) {
+            csemLiveData = resultsViewModel.getCSEMData();
+            setCSEMLiveData();
+        }
+    }
+
+    public void setToolbar() {
         // Toolbar ayarlamadan önce Context'in varlığını kontrol et
         Context context = getContext();
         if (context == null) {
             return;  // Context yoksa işlem yapma
         }
-
         Toolbar toolbar = frameLayout.findViewById(R.id.toolbar);
-        // Toolbar özelliklerini ayarla
-        if (toolbar != null) {
-            toolbar.setTitle("Deprem Radarı");
-            toolbar.setBackgroundColor(getResources().getColor(R.color.headerColor));
-        }
 
         if (getActivity() != null && getActivity() instanceof AppCompatActivity) {
             ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         }
     }
 
-    public void showLoading(){
+    public void showLoading() {
 
         if (!isAdded()) {  // Fragment hala Activity'ye bağlı mı kontrol et
             return;
@@ -168,36 +186,35 @@ public class DepremlerFragment extends Fragment{
             ((ViewGroup) loadingView.getParent()).removeView(loadingView);
         }
         frameLayout.addView(loadingView);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Yükleme görünümünü kaldır
-                frameLayout.removeView(loadingView);
-                // Ana içerik görünümünü ekle
-                if (rootView.getParent() != null) {
-                    ((ViewGroup) rootView.getParent()).removeView(rootView);
-                }
-                frameLayout.addView(rootView);
-                setToolbar();
-                resourceImage = frameLayout.findViewById(R.id.resourceImage);
-                updateResImg();
+        new Handler().postDelayed(() -> {
+            // Yükleme görünümünü kaldır
+            frameLayout.removeView(loadingView);
+            // Ana içerik görünümünü ekle
+            if (rootView.getParent() != null) {
+                ((ViewGroup) rootView.getParent()).removeView(rootView);
             }
+            frameLayout.addView(rootView);
+            setToolbar();
+            resourceImage = frameLayout.findViewById(R.id.resourceImage);
+            updateResImg();
         }, 3000);
     }
 
-    private void updateResImg(){
-        if(Objects.equals(selectedResource, "AFAD")){
+    private void updateResImg() {
+        if (Objects.equals(selectedResource, "AFAD")) {
             resourceImage.setImageResource(R.drawable.afad);
         } else if (Objects.equals(selectedResource, "Kandilli")) {
             resourceImage.setImageResource(R.drawable.kandilli);
-        }else {
+        } else {
             resourceImage.setImageResource(R.drawable.csem);
         }
     }
+
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.toolbar_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
+        //setToolbar();
     }
 
     @Override
@@ -205,17 +222,15 @@ public class DepremlerFragment extends Fragment{
         int id = item.getItemId();
 
         if (id == R.id.resource_data) {
-            System.out.println("resource_data");
             if (resourcesDialog == null) {
                 resourcesDialog = new ResourcesDialog(requireContext(), this);
             }
             resourcesDialog.show();
-            timeDialog = new TimeDialog(requireContext(), this);
+            timeDialog = new TimeDialog(requireContext(), this, selectedTime);
             return true;
         } else if (id == R.id.edit_time) {
-            System.out.println("edit_time");
             if (timeDialog == null) {
-                timeDialog = new TimeDialog(requireContext(), this);
+                timeDialog = new TimeDialog(requireContext(), this, selectedTime);
             }
             timeDialog.show();
             return true;
@@ -231,24 +246,23 @@ public class DepremlerFragment extends Fragment{
             for (int i = 0; i < buttonClicked.length; i++) {
                 if (i != index) {
                     buttonClicked[i] = false;
-                    updateButtonAppearance(filterButtons[i], filterCards[i], false,backgroundColor[i]);
-                }else {
-                    updateButtonAppearance(filterButtons[i], filterCards[i], true,backgroundColor[i]);
+                    updateButtonAppearance(filterButtons[i], filterCards[i], false, backgroundColor[i]);
+                } else {
+                    updateButtonAppearance(filterButtons[i], filterCards[i], true, backgroundColor[i]);
                 }
             }
             filterItems();
+            filterItemsByHour(Integer.parseInt(selectedTime), filteredList);
         } else {
-            updateButtonAppearance(filterButtons[index], filterCards[index], false,backgroundColor[index]);
-            for (int i = 0; i < buttonClicked.length; i++) {
-                buttonClicked[i] = false;
-            }
-            adapter = new MyAdapter(requireContext(), itemList);
+            updateButtonAppearance(filterButtons[index], filterCards[index], false, backgroundColor[index]);
+            Arrays.fill(buttonClicked, false);
+            adapter = new MyAdapter(requireContext(), filterItemsByHour(Integer.parseInt(selectedTime), itemList));
             recyclerView.setAdapter(adapter);
         }
     }
 
     private void filterItems() {
-        List<MyItem> filteredList = new ArrayList<>();
+        filteredList = new ArrayList<>();
         for (MyItem item : itemList) {
             //System.out.println(item.getMag());
             double magnitude = item.getMag();
@@ -259,15 +273,15 @@ public class DepremlerFragment extends Fragment{
                 filteredList.add(item);
             }
         }
-        adapter = new MyAdapter(requireContext(), filteredList);
-        recyclerView.setAdapter(adapter);
+        /*adapter = new MyAdapter(requireContext(), filteredList);
+        recyclerView.setAdapter(adapter);*/
     }
 
-    private void updateButtonAppearance(Button button, CardView card, boolean isSelected, int backgroundColor) {
+    public void updateButtonAppearance(Button button, CardView card, boolean isSelected, int backgroundColor) {
         // Seçili duruma göre kenarlık rengini ve kalınlığını güncelle
         if (isSelected) {
             card.setCardBackgroundColor(context.getResources().getColor(R.color.darkslategray));
-        } else{
+        } else {
             card.setCardBackgroundColor(context.getResources().getColor(backgroundColor));
         }
     }
@@ -281,15 +295,15 @@ public class DepremlerFragment extends Fragment{
         if (parts.length > 1) {
             province = parts[1].length() > 1 ? parts[1].replaceAll("\\)", "") : ""; // Parantez içindeki il bilgisini al
         }
-        return new String[] { district, province };
+        return new String[]{district, province};
     }
 
     private String formatTime(String timeStamp, String Resource) {
 
-        if(Objects.equals(Resource, "AFAD")){
+        if (Objects.equals(Resource, "AFAD")) {
             format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
             format.setTimeZone(TimeZone.getTimeZone("TSI"));
-        }else {
+        } else {
             format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
         }
 
@@ -303,7 +317,7 @@ public class DepremlerFragment extends Fragment{
                 timeDifference = Math.abs(timeDifference);
             }
             // Dakika cinsine dönüştür
-            double minutesDifference = Math.floor((double)timeDifference / (1000 * 60));
+            double minutesDifference = Math.floor((double) timeDifference / (1000 * 60));
 
             // Farka göre zamanı formatla
             if (minutesDifference < 60) {
@@ -320,7 +334,7 @@ public class DepremlerFragment extends Fragment{
         return "";
     }
 
-    public void setAfadLiveData(){
+    public void setAfadLiveData() {
         resourceImage.setImageResource(R.drawable.afad);
         for (int i = 0; i < buttonClicked.length; i++) {
             buttonClicked[i] = false;
@@ -333,18 +347,67 @@ public class DepremlerFragment extends Fragment{
             @Override
             public void onChanged(List<AfadParse.Data> afadData) {
                 itemList = new ArrayList<>();
+                System.out.println(afadData);
                 for (AfadParse.Data data : afadData) {
-                    if(data.getDistrict() != null || data.getProvince()!= null){
+                    if (data.getDistrict() != null || data.getProvince() != null) {
                         String date = formatTime(data.getDate(), "AFAD");
-                        itemList.add(new MyItem(Double.valueOf(data.getMagnitude()), data.getDistrict(), data.getProvince(), date, String.valueOf(data.getDepth())));
+                        itemList.add(new MyItem(Double.valueOf(data.getMagnitude()),
+                                data.getDistrict(),
+                                data.getProvince(), date,
+                                String.valueOf(data.getDepth()),
+                                Double.valueOf(data.getLatitude()), Double.valueOf(data.getLongitude())));
                     }
                 }
                 adapter = new MyAdapter(requireContext(), itemList);
                 recyclerView.setAdapter(adapter);
+                startDefaultFilterIndex();
             }
         });
     }
-    public void setKandilliLiveData(){
+
+    public void setCSEMLiveData() {
+        resourceImage.setImageResource(R.drawable.csem);
+        for (int i = 0; i < buttonClicked.length; i++) {
+            buttonClicked[i] = false;
+            updateButtonAppearance(filterButtons[i], filterCards[i], false, backgroundColor[i]);
+        }
+        showLoading();
+        setSelectedResource("CSEM");
+        //resourceImage.setImageResource(R.drawable.afad);
+        csemLiveData.observe(getViewLifecycleOwner(), new Observer<CsemParse>() {
+            @Override
+            public void onChanged(CsemParse csemData) {
+                itemList = new ArrayList<>();
+                String[] city;
+                String District;
+                String Province;
+                String date;
+                System.out.println("------------------");
+                for (CsemParse.Feature data : csemData.getFeatures()) {
+
+                    double latitude = data.getProperties().getLat();
+                    double longitude = data.getProperties().getLon();
+                    city = findLocation(latitude, longitude);
+                    if(Objects.equals(city[0], "") && Objects.equals(city[1], "")){
+                        city[1] = data.getProperties().getFlynnRegion();
+                    }
+                    if (data.getProperties().getFlynnRegion() != null /* data.getProperties().getFlynnRegion()!= null*/) {
+                        date = formatTime(data.getProperties().getTime(), "AFAD");
+                        itemList.add(new MyItem(data.getProperties().getMag(),
+                                city[0],
+                                city[1], date,
+                                String.valueOf(data.getProperties().getDepth()),
+                                data.getProperties().getLat(), data.getProperties().getLon()));
+                    }
+                }
+                adapter = new MyAdapter(requireContext(), itemList);
+                recyclerView.setAdapter(adapter);
+                startDefaultFilterIndex();
+            }
+        });
+    }
+
+    public void setKandilliLiveData() {
         resourceImage.setImageResource(R.drawable.kandilli);
 
         for (int i = 0; i < buttonClicked.length; i++) {
@@ -362,14 +425,134 @@ public class DepremlerFragment extends Fragment{
                     String district = cityInfo[0]; // İlçe bilgisini alır
                     String province = cityInfo[1];
                     String date = formatTime(result.getDate(), "Kandilli");
-                    itemList.add(new MyItem(result.getMag(), district, province, date, String.valueOf(result.getDepth())));
+                    itemList.add(new MyItem(result.getMag(), district, province, date, String.valueOf(result.getDepth()), result.getGeojson().getCoordinates()[1], result.getGeojson().getCoordinates()[0]));
                 }
-                adapter = new MyAdapter(requireContext(), itemList);
-                recyclerView.setAdapter(adapter);
-
+                /*adapter = new MyAdapter(requireContext(), itemList);
+                recyclerView.setAdapter(adapter);*/
+                startDefaultFilterIndex();
             }
         });
     }
+
+    @Override
+    public void onTimeSelected(int hours) {
+        boolean state = false;
+        for (boolean button : buttonClicked) {
+            if (button) {
+                state = button;
+                break;
+            }
+        }
+        if (filteredList.size() == 0 && !state) {
+            filterItemsByHour(hours, itemList);
+        } else {
+            filterItemsByHour(hours, filteredList);
+        }
+    }
+
+    private List<MyItem> filterItemsByHour(int time, List<MyItem> itemList) {
+        filteredFinalList = new ArrayList<>();
+        setSelectedTime(String.valueOf(time));
+
+        for (MyItem item : itemList) {
+            String itemTime = item.getHours(); // Varsayalım ki MyItem sınıfında zamanı temsil eden bir metot var
+            String[] timeArray = itemTime.split(" ");
+            int hour = Integer.parseInt(timeArray[0]);
+            String state = timeArray[1];
+
+            if ((Objects.equals(state, "dakika") || (hour <= 1 && Objects.equals(state, "saat") && time == 1))) {
+                filteredFinalList.add(item);
+            } else if ((hour <= 12 && Objects.equals(state, "saat")) && time == 12) {
+                filteredFinalList.add(item);
+            } else if ((hour <= 24 && Objects.equals(state, "saat")) && time == 24) {
+                filteredFinalList.add(item);
+            }
+        }
+        adapter = new MyAdapter(getContext(), filteredFinalList);
+        recyclerView.setAdapter(adapter);
+        return filteredFinalList;
+    }
+
+    public void startDefaultFilterIndex() {
+        if (!defaultFilterIndex.equals("4")) {
+            handleButtonClick(Integer.parseInt(defaultFilterIndex));
+        } else {
+            filterItemsByHour(Integer.parseInt(selectedTime), itemList);
+        }
+    }
+
+    public void setSelectedTime(String selectedTime) {
+        this.selectedTime = selectedTime;
+    }
+
+    public List<MyItem> getItemList() {
+        return itemList != null ? itemList : new ArrayList<>();
+    }
+
+    public List<MyItem> getFilteredFinalList() {
+        return filteredFinalList != null ? filteredFinalList : new ArrayList<>();
+    }
+
+    private String[] findLocation(double latitude ,double longitude){
+        Geocoder geocoder = new Geocoder(requireContext(), Locale.getDefault());
+
+        try {
+            // Enlem ve boylam bilgilerini adres bilgilerine çevirin
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            if (addresses != null && !addresses.isEmpty()) {
+                Address address = addresses.get(0);
+                String fullAddress = address.getAddressLine(0);
+
+                String regex = "(.*), (\\d{5}) ([^/]+)/([^,]+)";
+                String specialCaseRegex = "(.*), (\\d{5}) ([^/]+)/([^/]+)/([^,]+)";
+                String regex2 = "(\\d{5}) ([^/]+)/([^/]+)/([^,]+), Türkiye";
+                String specialCaseRegex2 = "(\\d{5}) ([^/]+)/([^,]+), Türkiye";
+                String province = "";
+                String district = "";
+
+                Pattern pattern = Pattern.compile(regex);
+                Pattern specialCasePattern = Pattern.compile(specialCaseRegex);
+                Pattern pattern2 = Pattern.compile(regex2);
+                Pattern specialCasePattern2 = Pattern.compile(specialCaseRegex2);
+
+                Matcher matcher = pattern.matcher(fullAddress);
+                Matcher specialCaseMatcher = specialCasePattern.matcher(fullAddress);
+                Matcher matcher2 = pattern2.matcher(fullAddress);
+                Matcher specialCaseMatcher2 = specialCasePattern2.matcher(fullAddress);
+
+
+                if (specialCaseMatcher.find()) {
+                    String subDistrict = specialCaseMatcher.group(3);
+                    district = specialCaseMatcher.group(4);
+                    province = specialCaseMatcher.group(5);
+                    district = subDistrict + "/" + district;
+                } else if (matcher.find()) {
+                    province = matcher.group(4);
+                    district = matcher.group(3);
+                }
+                else if (matcher2.find()) {
+                    province = matcher2.group(4);
+                    district = matcher2.group(2) + "/" + matcher2.group(3);
+                } else if (specialCaseMatcher2.find()) {
+                    province = specialCaseMatcher2.group(3);
+                    district = specialCaseMatcher2.group(2);
+                }
+                if(district=="" || province == ""){
+                    System.out.println(fullAddress);
+                }
+                return new String[]{district, province};
+            } else {
+                System.out.println("No address found for the provided coordinates.");
+                return new String[]{"", ""};
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new String[]{"No address found", ""};
+        }
+    }
+
+
+
 
 }
 

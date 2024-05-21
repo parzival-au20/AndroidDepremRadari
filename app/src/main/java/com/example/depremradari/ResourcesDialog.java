@@ -13,11 +13,12 @@ import java.util.Objects;
 public class ResourcesDialog extends Dialog {
 
     DepremlerFragment depremlerFragment;
-    public ResourcesDialog(@NonNull Context context, DepremlerFragment depremlerFragment) {
+    TercihlerFragment tercihlerFragment;
+    private ResourceDialogListener listener;
+    public ResourcesDialog(@NonNull Context context, ResourceDialogListener listener) {
         super(context);
-        this.depremlerFragment = depremlerFragment;
+        this.listener = listener;
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,20 +30,18 @@ public class ResourcesDialog extends Dialog {
         cardFilter1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Kandilli Res");
-                depremlerFragment.resultsViewModel.setRetrofitSettings("Kandilli");
-                depremlerFragment.kandilliLiveData = depremlerFragment.resultsViewModel.getResults();
-                depremlerFragment.setKandilliLiveData();
+                System.out.println("Kandilli Resource selected");
+                listener.onResourceSelected("Kandilli");
                 dismiss();
             }
         });
 
-// card_filter2 için tıklama dinleyicisi
         CardView cardFilter2 = findViewById(R.id.card_filter2);
         cardFilter2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("CSEM Res");
+                System.out.println("CSEM Resource selected");
+                listener.onResourceSelected("CSEM");
                 dismiss();
             }
         });
@@ -51,12 +50,11 @@ public class ResourcesDialog extends Dialog {
         cardFilter3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("AFAD Res");
-                depremlerFragment.resultsViewModel.setRetrofitSettings("AFAD");
-                depremlerFragment.afadLiveData = depremlerFragment.resultsViewModel.getAfadData();
-                depremlerFragment.setAfadLiveData();
+                System.out.println("AFAD Resource selected");
+                listener.onResourceSelected("AFAD");
                 dismiss();
             }
         });
+
     }
 }

@@ -19,35 +19,32 @@ import java.util.List;
 import java.util.Objects;
 
 public class ResultsViewModel extends ViewModel {
-    private String selectedResource ;
-    private String selectedTime;
     private MutableLiveData<List<KandilliParse.Result>> kandilliData = new MutableLiveData<>();
     private MutableLiveData<List<AfadParse.Data>> afadData = new MutableLiveData<>();
+    private MutableLiveData<CsemParse> CsemData = new MutableLiveData<>();
     private MutableLiveData<String> errorMessage = new MutableLiveData<>();
     private MutableLiveData<Boolean> loading = new MutableLiveData<>();
     private Retrofit retrofitKandilli;
     private Retrofit retrofitAfad;
+    private Retrofit retrofitCSEM;
     private ApiInterface kandilliApi;
     private ApiInterface afadApi;
+    private ApiInterface CSEMApi;
     private String baseUrlKandilli = "https://api.orhanaydogdu.com.tr/";
     private String baseUrlAFAD = "https://deprem.afad.gov.tr/";
+    private String baseUrlCSEM = "https://www.seismicportal.eu/";
     private Call<KandilliParse> kandilliParseCall;
     private Call<List<AfadParse.Data>> afadParseCall;
+    private Call<CsemParse> CSEMParseCall;
     private KandilliParse kandilliParse;
+    private CsemParse csemParse;
     private List<AfadParse.Data> afadParse;
-
-    public String getSelectedResource() {
-        return selectedResource;
-    }
-
-    public String getSelectedTime() {
-        return selectedTime;
-    }
 
     public LiveData<List<KandilliParse.Result>> getResults() {
         return kandilliData;
     }
     public LiveData<List<AfadParse.Data>> getAfadData() { return afadData; }
+    public LiveData<CsemParse> getCSEMData() { return CsemData; }
 
     public LiveData<String> getErrorMessage() {
         return errorMessage;
@@ -55,14 +52,6 @@ public class ResultsViewModel extends ViewModel {
 
     public LiveData<Boolean> isLoading() {
         return loading;
-    }
-
-    public void setSelectedResource(String resource) {
-        selectedResource = resource;
-    }
-
-    public void setSelectedTime(String time) {
-        selectedTime = time;
     }
 
     public void setRetrofitSettings(String Resource){
@@ -88,14 +77,28 @@ public class ResultsViewModel extends ViewModel {
 
             afadApi = retrofitAfad.create(ApiInterface.class);
 
-            System.out.println(currentDate+"-----"+oneDayAgoDate);
             afadParseCall = afadApi.getAfadData(
-                    oneDayAgoDate, currentDate, "timedesc", 300);
+                    oneDayAgoDate, currentDate, "timedesc", 200);
             fetchDataFromAFAD(afadApi, afadParseCall, afadData);
             System.out.println("burası afad setRetrosettings");
+            System.out.println(getAfadData());
         }
         else{
-            fetchDataFromKandilli();
+            retrofitCSEM = new Retrofit.Builder()
+                    .baseUrl(baseUrlCSEM)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            CSEMApi = retrofitCSEM.create(ApiInterface.class);
+            CSEMParseCall = CSEMApi.getCSEMData(
+                    200,
+                    oneDayAgoDate, currentDate,
+                    34, 45,
+                    24,46,"json"
+            );
+            //fetchDataFromCSEM();
+            fetchDataFromAFAD(CSEMApi, CSEMParseCall, CsemData);
+            System.out.println("burası Csem setRetrosettings");
+            System.out.println(getCSEMData());
         }
 
     }
@@ -136,6 +139,24 @@ public class ResultsViewModel extends ViewModel {
             }
         });
     }
+    /*public void fetchDataFromCSEM() {
+        CSEMParseCall.enqueue(new Callback<List<CsemParse.Feature>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<CsemParse.Feature>> call, @NonNull Response<List<CsemParse.Feature>> response) {
+                if(response.isSuccessful()){
+                    csemParse = (CsemParse) response.body();
+                    if (csemParse != null) {
+                        CsemData.setValue(csemParse.getFeatures());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<CsemParse.Feature>> call, @NonNull Throwable t) {
+                System.out.println(t.toString());
+            }
+        });
+    }*/
 
     public String toISOString(Date formattedDate){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");

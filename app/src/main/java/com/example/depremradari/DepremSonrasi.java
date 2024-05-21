@@ -32,12 +32,11 @@ public class DepremSonrasi extends Fragment {
         Toolbar toolbar = rootView.findViewById(R.id.toolbar);
 
         if (getActivity() instanceof AppCompatActivity) {
-            AppCompatActivity activity = (AppCompatActivity) getActivity();
-            activity.setSupportActionBar(toolbar);
-
             toolbar.setNavigationOnClickListener(view -> {
                 // Fragment'tan önceki ekrana dön
-                activity.onBackPressed();
+                if (getFragmentManager() != null) {
+                    getFragmentManager().popBackStack(); // BackStack'i yönet
+                }
             });
         }
 
@@ -67,7 +66,7 @@ public class DepremSonrasi extends Fragment {
 
     private void navigateToFragment(Fragment fragment) {
         requireActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frameLayout, fragment)
+                .replace(R.id.frameLayoutTatbikat, fragment)
                 .addToBackStack(null)
                 .commit();
     }

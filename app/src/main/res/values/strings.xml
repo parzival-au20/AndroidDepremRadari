@@ -324,4 +324,135 @@
         varsayılacaktır. Şayet kabul etmiyorsanız, lütfen uygulamayı tüm cihazlarınızdan kaldırınız. Ayrıntılı bilgi için bizimle
         <b>depremRadari@gmail.com</b>  e-mail adresi üzerinden iletişime geçmekten lütfen çekinmeyiniz.
     </string>
+    <string name="video1">
+        Engelli Vatandaşlarımız Afetlere Nasıl Hazırlanabilir?
+    </string>
+    <string name="video2">
+        Evinizi ve Kendinizi Güvene Alın!
+    </string>
+    <string name="video3">
+        DEPREM SONRASI İLK 6 SAAT HAYATİ ÖNEMDEDİR!
+    </string>
+    <string name="video4">
+        Deprem Olmadan, Biz Hazır Olalım
+    </string>
+    <string name="video5">
+        Deprem Anında Doğru Davranışlar
+    </string>
+    <string name="video6">
+        Bir deprem anında yapılması gerekenleri biliyor musunuz?
+    </string>
+    <string name="video7">
+        Japonya\'dan Kahramanmaraş dersleri: Japonlar depreme nasıl hazırlanıyor?
+    </string>
+    <string name="video8">
+        Güven Ailesi ile Görevimiz Deprem
+    </string>
+    <string name="video9">
+        Afet ve Acil Durum Çantası Nasıl Hazırlanır?
+    </string>
+    <string name="video10">
+        DEPREMDE NE YAPMALIYIZ / DEPREM ÖNCESİ ANI VE SONRASI YAPILMASI GEREKENLER
+    </string>
+
+    <string name="Soru1">
+        Metroda yolculuk sırasında depreme yakalanırsak nasıl davranmalıyız ?
+    </string>
+    <string name="Soru1_A">
+        Ayaktaysanız trenin gittiği yöne yüzünüzü dönün, otuyorsanız bir elinizle tutunup bir elinizle başınızı koruyun.
+    </string>
+    <string name="Soru1_B">
+        Acil durum çıkışını kullanarak metroyu hızlıca terk edin.
+    </string>
+
+    <string name="Soru2">
+        Açık alanda depreme yakalanıldığında hangisi yapılmalıdır ?
+    </string>
+    <string name="Soru2_A">
+        Bina ve duvar diplerinden uzaklaşarak açık alanlara yönelmek.
+    </string>
+    <string name="Soru2_B">
+        Elektrik direklerine tutunmak.
+    </string>
+
+    <string name="Soru3">
+        Depreme benzin istasyonunda yakalanırsak ne yapmalıyız ?
+    </string>
+    <string name="Soru3_A">
+        Benzin istasyonlarından aracınızla hızla uzaklaşmalısınız.
+    </string>
+    <string name="Soru3_B">
+        Güvenli ve çelik yapılar olan benzin istasyonlarında yetkililerden bilgi beklenmelidir.
+    </string>
+
+    <string name="Soru4">
+        Depreme otomobilde yakalanırsak ne yapmalıyız ?
+    </string>
+    <string name="Soru4_A">
+        Aracınızı kapalı alanlara sürün.
+    </string>
+    <string name="Soru4_B">
+        Depremden sonra aracın kontak anahtarını üzerinde bırakarak terk edin, açık alanlara yönelin.
+    </string>
+
+    <string name="Soru5">
+        Depreme asansörde yakalanırsak ne yapmalıyız ?
+    </string>
+    <string name="Soru5_A">
+        Asansörde depremin bitmesini bekleyin.
+    </string>
+    <string name="Soru5_B">
+        En yakın katta asansörden çıkın ve güvenliyse binayı terk edin.
+    </string>
+
+    <string name="Soru6">
+        Deprem sonrasında güvenlik için hangisi yapılmalıdır ?
+    </string>
+    <string name="Soru6_A">
+        Sarsıntı geçtikten sonra elektrik, gaz ve su vanaları kapatılmalıdır.
+    </string>
+    <string name="Soru6_B">
+        Elektrik ve gaz vanalarını açık bırakıp, ışıkları kontrol etmek.
+    </string>
+
+    <string name="Soru7">
+        Deprem anında binada ne yapılmamalıdır ?
+    </string>
+    <string name="Soru7_A">
+        Sabitlenmemiş eşyalardan uzak durulmalıdır.
+    </string>
+    <string name="Soru7_B">
+        Merdivenlere ya da çıkışlara doğru koşulmalıdır.
+    </string>
+
+    <string name="Soru8">
+        Ailedeki her bir üye içindeprem çantasında ne kadar su bulundurulmalıdır ?
+    </string>
+    <string name="Soru8_A">
+        Kişi başı 4 litre su.
+    </string>
+    <string name="Soru8_B">
+        Kişi başı 1 litre su.
+    </string>
+
+    <string name="Soru9">
+        Deprem sonrası hasarlı binalar hakkında ne yapılmalıdır ?
+    </string>
+    <string name="Soru9_A">
+         Hasarlı binalara girip önemli eşyaları toplamak.
+    </string>
+    <string name="Soru9_B">
+        Hasarlı binalara girilmemeli, artçı depremler tamamen bitene kadar beklenmelidir.
+    </string>
+
+    <string name="Soru10">
+        Deprem sonrası acil çıkış kapıları nasıl olmalıdır ?
+    </string>
+    <string name="Soru10_A">
+        Acil çıkış kapıları içe doğru açılmalı ve sıkı şekilde kilitlenmelidir.
+    </string>
+    <string name="Soru10_B">
+        Dışa doğru açılan kapılar kullanılmalı, acil çıkış kapıları kilitli olmamalıdır.
+    </string>
+
 </resources>

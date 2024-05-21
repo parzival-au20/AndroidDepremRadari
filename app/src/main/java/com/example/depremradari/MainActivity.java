@@ -13,10 +13,17 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
 
-
+    private FragmentManager fragmentManager;
+    private Fragment depremlerFragment;
+    private Fragment haritaFragment;
+    private Fragment tatbikatFragment;
+    private Fragment tercihlerFragment;
+    private Fragment activeFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +36,20 @@ public class MainActivity extends AppCompatActivity {
         ColorStateList colorStateList3 = ContextCompat.getColorStateList( this,R.color.active_color_3);
         ColorStateList colorStateList4 = ContextCompat.getColorStateList( this,R.color.active_color_4);
         bottomNavigationView.setItemTextColor(createColorStateList(getResources().getColor(R.color.Depremred), getResources().getColor(R.color.black)));
-        DepremlerFragment depremlerFragment = new DepremlerFragment();
+        //DepremlerFragment depremlerFragment = new DepremlerFragment();
+        fragmentManager = getSupportFragmentManager();
+        depremlerFragment = new DepremlerFragment();
+        haritaFragment = new HaritaFragment();
+        tatbikatFragment = new TatbikatFragment();
+        tercihlerFragment = new TercihlerFragment();
 
+        // Başlangıçta DepremlerFragment'i yükle
+        fragmentManager.beginTransaction()
+                .add(R.id.frameLayout, depremlerFragment, "depremlerFragment")
+                .commit();
+        activeFragment = depremlerFragment;
 
-        loadFragment(depremlerFragment, false);
+        //loadFragment(depremlerFragment, false,"depremlerFragment");
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -40,30 +57,53 @@ public class MainActivity extends AppCompatActivity {
                 int itemId = item.getItemId();
 
                 if (itemId == R.id.navDepremler){
-                    loadFragment(new DepremlerFragment(), false);
-                    bottomNavigationView.setItemActiveIndicatorColor(colorStateList1);
-                    bottomNavigationView.setItemTextColor(createColorStateList(getResources().getColor(R.color.Depremred), getResources().getColor(R.color.black)));
+                    //loadFragment(new DepremlerFragment(), false, "depremlerFragment");
+                    switchFragment(depremlerFragment, colorStateList1, R.color.Depremred);
+                    return true;
                 } else if (itemId == R.id.navHarita) {
-                    loadFragment(new HaritaFragment(), false);
-                    bottomNavigationView.setItemActiveIndicatorColor(colorStateList2);
-                    bottomNavigationView.setItemTextColor(createColorStateList(getResources().getColor(R.color.blue), getResources().getColor(R.color.black)));
+                    DepremlerFragment depremlerFragment = (DepremlerFragment) getSupportFragmentManager().findFragmentByTag("depremlerFragment");
+                    if (depremlerFragment != null) {
+                        ArrayList<MyItem> earthquakeData = new ArrayList<>(depremlerFragment.getFilteredFinalList().isEmpty() ? depremlerFragment.getItemList() : depremlerFragment.getFilteredFinalList());
+                        haritaFragment  = HaritaFragment.newInstance(earthquakeData);
+                        //loadFragment(haritaFragment , false, "haritaFragment");
+                    } /*else {
+                        loadFragment(new HaritaFragment(), false,"haritaFragment");
+                    }*/
+                    switchFragment(haritaFragment, colorStateList2, R.color.blue);
+                    return true;
                 }else if (itemId == R.id.navHazirlik) {
-                    loadFragment(new TatbikatFragment(), false);
-                    bottomNavigationView.setItemActiveIndicatorColor(colorStateList3);
-                    bottomNavigationView.setItemTextColor(createColorStateList(getResources().getColor(R.color.orange), getResources().getColor(R.color.black)));
-                }else {
-                    loadFragment(new TercihlerFragment(), false);
-                    bottomNavigationView.setItemActiveIndicatorColor(colorStateList4);
-                    bottomNavigationView.setItemTextColor(createColorStateList(getResources().getColor(R.color.green), getResources().getColor(R.color.black)));
+                    //loadFragment(new TatbikatFragment(), false, "tatbikatFragment");
+                    switchFragment(tatbikatFragment,colorStateList3, R.color.orange);
+                    return true;
+                }else if(itemId == R.id.navTercihler){
+                    //loadFragment(new TercihlerFragment(), false,"tercihlerFragment");
+                    switchFragment(tercihlerFragment, colorStateList4, R.color.green);
+                    return true;
                 }
-                return true;
+                return false;
             }
         });
     }
-    private void loadFragment(Fragment fragment, boolean isAppInitilazed){
+
+    private void switchFragment(Fragment fragment, ColorStateList colorStateList, int activeColor) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        bottomNavigationView.setItemActiveIndicatorColor(colorStateList);
+        bottomNavigationView.setItemTextColor(createColorStateList(getResources().getColor(activeColor), getResources().getColor(R.color.black)));
+
+        if (fragment.isAdded()) {
+            transaction.hide(activeFragment).show(fragment);
+        } else {
+            transaction.hide(activeFragment).add(R.id.frameLayout, fragment);
+        }
+        transaction.commit();
+        activeFragment = fragment;
+    }
+    private void loadFragment(Fragment fragment, boolean isAppInitilazed, ColorStateList colorStateList, int activeColor){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+        bottomNavigationView.setItemActiveIndicatorColor(colorStateList);
+        bottomNavigationView.setItemTextColor(createColorStateList(getResources().getColor(activeColor), getResources().getColor(R.color.black)));
         if (isAppInitilazed){
             fragmentTransaction.add(R.id.frameLayout, fragment);
         }else {
